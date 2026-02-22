@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornament Gallery - Admin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>✨ Admin Panel</h1>
+        <nav>
+            <a href="index.html">View Gallery</a>
+            <a href="admin.html" class="active">Admin</a>
+        </nav>
+    </header>
 
+    <main class="admin-container">
+        <!-- Category Management -->
+        <section class="admin-section">
+            <h2>Manage Categories</h2>
+            
+            <div class="form-group">
+                <label for="categoryName">New Category Name:</label>
+                <input type="text" id="categoryName" placeholder="e.g., Necklaces, Rings, Earrings">
+                <button onclick="addCategory()" class="btn-primary">Add Category</button>
+            </div>
+
+            <div id="categoriesList" class="categories-list">
+                <!-- Categories will be listed here -->
+            </div>
+        </section>
+
+        <!-- Product Upload -->
+        <section class="admin-section">
+            <h2>Add Ornament</h2>
+            
+            <form id="uploadForm" onsubmit="event.preventDefault(); addProduct();">
+                <div class="form-group">
+                    <label for="productCategory">Select Category:</label>
+                    <select id="productCategory" required>
+                        <option value="">Choose a category</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="productName">Ornament Name:</label>
+                    <input type="text" id="productName" required placeholder="e.g., Gold Necklace">
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Price ($):</label>
+                    <input type="number" id="productPrice" step="0.01" required placeholder="99.99">
+                </div>
+
+                <div class="form-group">
+                    <label for="productDescription">Description:</label>
+                    <textarea id="productDescription" required placeholder="Describe the ornament..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="productImage">Image URL or Upload:</label>
+                    <input type="text" id="productImageUrl" placeholder="Or enter image URL">
+                    <p class="or-divider">OR</p>
+                    <input type="file" id="productImageFile" accept="image/*">
+                    <small>For GitHub: Upload images to the 'images' folder first, then use the URL</small>
+                </div>
+
+                <button type="submit" class="btn-primary">Add Ornament</button>
+            </form>
+        </section>
+
+        <!-- Preview Section -->
+        <section class="admin-section">
+            <h2>Current Products</h2>
+            <div id="adminProductsPreview" class="preview-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Load admin data on page load
+        document.addEventListener('DOMContentLoaded', loadAdminData);
+    </script>
+</body>
+</html>
