@@ -1,1 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornament Gallery - Display</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>✨ Ornament Collection</h1>
+        <nav>
+            <a href="index.html" class="active">View Gallery</a>
+            <a href="admin.html">Admin</a>
+        </nav>
+    </header>
 
+    <main>
+        <!-- Categories Grid -->
+        <section id="categoriesView" class="categories-grid">
+            <h2>Categories</h2>
+            <div id="categoriesContainer" class="grid-container"></div>
+        </section>
+
+        <!-- Products View (hidden by default) -->
+        <section id="productsView" class="products-view" style="display: none;">
+            <button onclick="showCategories()" class="back-btn">← Back to Categories</button>
+            <h2 id="categoryTitle"></h2>
+            <div id="productsContainer" class="grid-container"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Load categories on page load
+        document.addEventListener('DOMContentLoaded', loadCategories);
+    </script>
+</body>
+</html>
